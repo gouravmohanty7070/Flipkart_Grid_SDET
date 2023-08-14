@@ -9,6 +9,7 @@ import pandas as pd
 import pickle 
 from dotenv import load_dotenv, find_dotenv
 
+from LLM import get_query_from_text
 
 load_dotenv(find_dotenv())
 # initialize connection to pinecone (get API key at app.pinecone.io)
@@ -175,13 +176,14 @@ def save_images(image_batch, output_folder):
 # image_from_query = make_query_from_images(create_images_and_metadata()[0][5])
 
 
-# Uncomment to save images in local directory 
 
+# text = input("What would you like to wear")
+# image_from_query = make_query(query_dense=get_query_from_text(text), query_sparse=get_query_from_text(text))
+
+# Uncomment to save images in local directory 
 # image_batch = image_from_query# Your image batch
 # output_folder = r"C:\Users\ACER\Desktop\hackathons\Flipkart_Grid_SDET\output_images"
 # saved_image_paths = save_images(image_batch, output_folder)
 
 # for image_path in saved_image_paths:
 #     print("Image saved:", image_path)
-
-

@@ -35,6 +35,11 @@ prompt = ChatPromptTemplate(
                 output: festive kurta
                 example 3: "Something in stylish black shirt"
                 output: stylish black shirt
+                IMPORTANT if you get ambiguous ideas like date night, festivals etc. Use your knowledge to discern what kind of clothes will be best for that occasion and give that as output
+                example 1: "Festival clothing for christmas"
+                output: christmas clothing
+                example 2: "Date night clothes"
+                output: black slim dress
                                                  """),
         MessagesPlaceholder(variable_name="chat_history"),
         HumanMessagePromptTemplate.from_template("{question}")
@@ -53,5 +58,5 @@ conversation = LLMChain(
 
 # Notice that we just pass in the `question` variables - `chat_history` gets populated by memory
 
-output = conversation.run({"question": "Something nice to gift my brother, he likes to wear baggy clothes"})
-print(output)
+def get_query_from_text(question):
+    return conversation.run({"question": question})
