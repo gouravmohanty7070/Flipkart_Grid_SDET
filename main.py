@@ -122,15 +122,10 @@ def hybrid_scale(dense, sparse, alpha: float):
     hdense = [v * alpha for v in dense]
     return hdense, hsparse
 
-def make_query(query, model = load_model(), bm25 = load_sparse_embeddings(), index = index, images = create_images_and_metadata()[0], alpha=0.05):
-    query = query
-
+def make_query(query_sparse, query_dense, model = load_model(), bm25 = load_sparse_embeddings(), index = index, images = create_images_and_metadata()[0], alpha=0.05):
     # create sparse and dense vectors
-    if isinstance(query, str):
-        sparse = bm25.encode_queries(query)
-    else:
-        sparse = bm25.encode_documents("clothes")
-    dense = model.encode(query).tolist()
+    sparse = bm25.encode_documents(query_sparse)
+    dense = model.encode(query_dense).tolist()
 
     hdense, hsparse = hybrid_scale(dense, sparse, alpha=alpha)
     # search
@@ -144,8 +139,11 @@ def make_query(query, model = load_model(), bm25 = load_sparse_embeddings(), ind
     imgs = [images[int(r["id"])] for r in result["matches"]]
     return imgs
 
-def make_query_from_images(img):
-    output = make_query(img,alpha=1)
+def make_query_from_images(img, query_sparse = None):
+    if query_sparse == None:
+        output = make_query(query_sparse= "clothes",query_dense=img,alpha=1)
+    else:
+        output = make_query(query_sparse= query_sparse,query_dense=img,alpha=0.5)
     return output
 
 def save_images(image_batch, output_folder):
@@ -172,8 +170,8 @@ def save_images(image_batch, output_folder):
 # print("sparse embeddings created")
 
 # uncomment for testing
-
-# image_from_query = make_query("white shoes")
+# query = "purple shoes"
+# image_from_query = make_query(query_dense="purple shoes", query_sparse="purple shoes")
 # image_from_query = make_query_from_images(create_images_and_metadata()[0][5])
 
 
