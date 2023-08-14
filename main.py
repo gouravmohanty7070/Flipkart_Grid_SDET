@@ -101,23 +101,6 @@ def upsert_documents(fashion = load_fashion_dataset(), images = create_images_an
     # show index description after uploading the documents
     return index.describe_index_stats()
 
-def make_query(query, model = load_model(), bm25 = load_sparse_embeddings(), index = index, images = create_images_and_metadata()[0]):
-    query = query
-
-    # create sparse and dense vectors
-    sparse = bm25.encode_queries(query)
-    dense = model.encode(query).tolist()
-    # search
-    result = index.query(
-        top_k=14,
-        vector=dense,
-        sparse_vector=sparse,
-        include_metadata=True
-    )
-    # used returned product ids to get images
-    imgs = [images[int(r["id"])] for r in result["matches"]]
-    return imgs
-
 def hybrid_scale(dense, sparse, alpha: float):
     """Hybrid vector scaling using a convex combination
 
@@ -138,6 +121,25 @@ def hybrid_scale(dense, sparse, alpha: float):
     }
     hdense = [v * alpha for v in dense]
     return hdense, hsparse
+
+def make_query(query, model = load_model(), bm25 = load_sparse_embeddings(), index = index, images = create_images_and_metadata()[0], alpha=0.05):
+    query = query
+
+    # create sparse and dense vectors
+    sparse = bm25.encode_queries(query)
+    dense = model.encode(query).tolist()
+
+    hdense, hsparse = hybrid_scale(dense, sparse, alpha=alpha)
+    # search
+    result = index.query(
+        top_k=14,
+        vector=hdense,
+        sparse_vector=hsparse,
+        include_metadata=True
+    )
+    # used returned product ids to get images
+    imgs = [images[int(r["id"])] for r in result["matches"]]
+    return imgs
 
 def save_images(image_batch, output_folder):
     if not os.path.exists(output_folder):
