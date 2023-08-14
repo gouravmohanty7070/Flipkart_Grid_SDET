@@ -6,11 +6,15 @@ from sentence_transformers import SentenceTransformer
 import torch
 from tqdm.auto import tqdm
 import pandas as pd
+import pickle 
+from dotenv import load_dotenv, find_dotenv
 
+
+load_dotenv(find_dotenv())
 # initialize connection to pinecone (get API key at app.pinecone.io)
-api_key = os.getenv("PINECONE_API_KEY") 
+api_key = os.environ.get("PINECONE_API_KEY")
 # find your environment next to the api key in pinecone console
-env = os.getenv("PINECONE_ENVIRONMENT") 
+env = os.environ.get("PINECONE_ENVIRONMENT") 
 
 # init connection to pinecone
 pinecone.init(
@@ -46,7 +50,14 @@ def create_images_and_metadata(fashion = load_fashion_dataset()):
 def create_sparse_embeddings(data = create_images_and_metadata()):
     bm25 = BM25Encoder()
     bm25.fit(data[1]['productDisplayName'])
+    with open('bm25_encoder.pkl', 'wb') as f:
+        pickle.dump(bm25, f)
     return bm25
+
+def load_sparse_embeddings():
+    with open('bm25_encoder.pkl', 'rb') as f:
+        loaded_bm25 = pickle.load(f)
+    return loaded_bm25
 
 def load_model():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -56,7 +67,7 @@ def load_model():
     )
     return model
 
-def upsert_documents(fashion = load_fashion_dataset(), images = create_images_and_metadata()[0], metadata = create_images_and_metadata()[1], model = load_model(), bm25 = create_sparse_embeddings(), index = index):
+def upsert_documents(fashion = load_fashion_dataset(), images = create_images_and_metadata()[0], metadata = create_images_and_metadata()[1], model = load_model(), bm25 = load_sparse_embeddings(), index = index):
     batch_size = 200
     for i in tqdm(range(0, len(fashion), batch_size)):
         # find end of batch
@@ -90,7 +101,7 @@ def upsert_documents(fashion = load_fashion_dataset(), images = create_images_an
     # show index description after uploading the documents
     return index.describe_index_stats()
 
-def make_query(query, model = load_model(), bm25 = create_sparse_embeddings(), index = index, images = create_images_and_metadata()[0]):
+def make_query(query, model = load_model(), bm25 = load_sparse_embeddings(), index = index, images = create_images_and_metadata()[0]):
     query = query
 
     # create sparse and dense vectors
@@ -140,19 +151,27 @@ def save_images(image_batch, output_folder):
         saved_paths.append(image_path)
     return saved_paths
 
-image_from_query = make_query("blue shirt")
+# uncomment to upload vectors in db store
+
+# status = upsert_documents()
+# print(status)
+
+# uncomment to create embeddings
+
+# print("beginning to create sparse embeddings")
+# create_sparse_embeddings()
+# print("sparse embeddings created")
+
+image_from_query = make_query("white shoes")
 
 
 # Uncomment to save images in local directory 
 
-# image_batch = image_from_query# Your image batch
-# output_folder = r"C:\Users\ACER\Desktop\hackathons\Flipkart_Grid_SDET\output_images"
-# saved_image_paths = save_images(image_batch, output_folder)
+image_batch = image_from_query# Your image batch
+output_folder = r"C:\Users\ACER\Desktop\hackathons\Flipkart_Grid_SDET\output_images"
+saved_image_paths = save_images(image_batch, output_folder)
 
-# for image_path in saved_image_paths:
-#     print("Image saved:", image_path)
+for image_path in saved_image_paths:
+    print("Image saved:", image_path)
 
-# Uncomment to upload vectors in db store
-# status = upsert_documents()
-# print(status)
 
