@@ -126,7 +126,10 @@ def make_query(query, model = load_model(), bm25 = load_sparse_embeddings(), ind
     query = query
 
     # create sparse and dense vectors
-    sparse = bm25.encode_queries(query)
+    if isinstance(query, str):
+        sparse = bm25.encode_queries(query)
+    else:
+        sparse = bm25.encode_documents("clothes")
     dense = model.encode(query).tolist()
 
     hdense, hsparse = hybrid_scale(dense, sparse, alpha=alpha)
@@ -140,6 +143,10 @@ def make_query(query, model = load_model(), bm25 = load_sparse_embeddings(), ind
     # used returned product ids to get images
     imgs = [images[int(r["id"])] for r in result["matches"]]
     return imgs
+
+def make_query_from_images(img):
+    output = make_query(img,alpha=1)
+    return output
 
 def save_images(image_batch, output_folder):
     if not os.path.exists(output_folder):
@@ -164,16 +171,19 @@ def save_images(image_batch, output_folder):
 # create_sparse_embeddings()
 # print("sparse embeddings created")
 
-image_from_query = make_query("white shoes")
+# uncomment for testing
+
+# image_from_query = make_query("white shoes")
+# image_from_query = make_query_from_images(create_images_and_metadata()[0][5])
 
 
 # Uncomment to save images in local directory 
 
-image_batch = image_from_query# Your image batch
-output_folder = r"C:\Users\ACER\Desktop\hackathons\Flipkart_Grid_SDET\output_images"
-saved_image_paths = save_images(image_batch, output_folder)
+# image_batch = image_from_query# Your image batch
+# output_folder = r"C:\Users\ACER\Desktop\hackathons\Flipkart_Grid_SDET\output_images"
+# saved_image_paths = save_images(image_batch, output_folder)
 
-for image_path in saved_image_paths:
-    print("Image saved:", image_path)
+# for image_path in saved_image_paths:
+#     print("Image saved:", image_path)
 
 
