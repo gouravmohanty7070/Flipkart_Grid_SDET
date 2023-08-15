@@ -3,7 +3,6 @@ import os
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
-
 REPLICATE_API_TOKEN = os.environ.get("REPLICATE_API_TOKEN")
 
 def clothes_visualizer(prompt):
