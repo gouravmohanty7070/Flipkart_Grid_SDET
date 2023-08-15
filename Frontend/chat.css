@@ -1,0 +1,118 @@
+
+        :root {
+            --color-primary: #6D9886;
+            --color-text: #393E46;
+            --border-radius: 0.2778rem;
+            --color-background: #F8F5F1;
+            --color-white: #F7F7F7;
+            --color-grey: #686B6E;
+            --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            outline: 0;
+            appearance: none;
+            border: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        html {
+            font-size: 1rem;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            background-color: var(--color-background);
+        }
+
+        .left-container {
+            width: 289px;
+            height: 982px;
+            background-color: var(--color-background);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .chat-button {
+            margin-top: 16px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            margin-top: 16px;
+        }
+
+        .section-icon {
+            margin-right: 8px;
+            color: var(--color-text);
+
+        }
+
+        .section-title {
+            font-weight:400;
+        }
+
+        .card {
+            display: flex;
+            width: 95%;
+            padding: 16px;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--color-background);
+            margin-top: auto;
+            border-radius: 4px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .profile-picture {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+        }
+
+        .user-name {
+            font-weight: 600;
+        }
+
+        .user-location {
+            color: var(--color-grey);
+        }
+
+        .settings-icon {
+            font-size: 18px;
+            color: var(--color-text);
+            cursor: pointer;
+        }
+
+        .chats {
+            margin-top: 15px;
+        }
+
+        .custom {
+            margin-top: 550px;
+ 
+        }
