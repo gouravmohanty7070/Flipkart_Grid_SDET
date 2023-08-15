@@ -1,118 +1,208 @@
+:root {
+    --color-primary: #6D9886;
+    --color-text: #393E46;
+    --border-radius: 0.2778rem;
+    --color-background: #F8F5F1;
+    --color-white: #F7F7F7;
+    --color-grey: #686B6E;
+    --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
 
-        :root {
-            --color-primary: #6D9886;
-            --color-text: #393E46;
-            --border-radius: 0.2778rem;
-            --color-background: #F8F5F1;
-            --color-white: #F7F7F7;
-            --color-grey: #686B6E;
-            --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        }
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            outline: 0;
-            appearance: none;
-            border: 0;
-            text-decoration: none;
-            list-style: none;
-            box-sizing: border-box;
-            font-family: "Montserrat", sans-serif;
-        }
+html {
+    font-size: 1rem;
+}
 
-        html {
-            font-size: 1rem;
-        }
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--color-background);
+}
 
-        body {
-            font-family: "Montserrat", sans-serif;
-            background-color: var(--color-background);
-        }
+.left-container {
+    width: 290px;
+    height: 982px;
+    background-color: var(--color-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-shadow: var(--box-shadow);
+    top: 0;
+}
 
-        .left-container {
-            width: 289px;
-            height: 982px;
-            background-color: var(--color-background);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px;
-            box-shadow: var(--box-shadow);
-        }
+.chat-button {
+    margin-top: 16px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-        .chat-button {
-            margin-top: 16px;
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            
-        }
+.section-heading {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+}
 
-        .section-heading {
-            display: flex;
-            align-items: center;
-            margin-top: 16px;
-        }
+.section-icon {
+    margin-right: 8px;
+    color: var(--color-text);
+}
 
-        .section-icon {
-            margin-right: 8px;
-            color: var(--color-text);
+.section-title {
+    font-weight: 400;
+}
 
-        }
+.card {
+    display: flex;
+    width: 95%;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-background);
+    margin-top: auto;
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
+}
 
-        .section-title {
-            font-weight:400;
-        }
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
-        .card {
-            display: flex;
-            width: 95%;
-            padding: 16px;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--color-background);
-            margin-top: auto;
-            border-radius: 4px;
-            box-shadow: var(--box-shadow);
-        }
+.user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
 
-        .profile-picture {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+.user-name {
+    font-weight: 600;
+}
 
-        .user-details {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 2px;
-        }
+.user-location {
+    color: var(--color-grey);
+}
 
-        .user-name {
-            font-weight: 600;
-        }
+.settings-icon {
+    font-size: 18px;
+    color: var(--color-text);
+    cursor: pointer;
+}
 
-        .user-location {
-            color: var(--color-grey);
-        }
+.chats {
+    margin-top: 15px;
+}
 
-        .settings-icon {
-            font-size: 18px;
-            color: var(--color-text);
-            cursor: pointer;
-        }
+.custom {
+    margin-top: 550px;
+}
 
-        .chats {
-            margin-top: 15px;
-        }
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 290px);
+    height: 86px;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    padding: 0 20px;
+    box-shadow: var(--box-shadow);
+    position: absolute;
+    top: 0;
+    left: 290px;
+}
 
-        .custom {
-            margin-top: 550px;
- 
-        }
+.nav-name {
+    font-size: 2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-to-cart-button {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    gap: 8px;
+}
+
+.add-to-cart-icon {
+    font-size: 18px;
+}
+
+.container-wrapper {
+    position: relative;
+}
+
+.chat-button,
+.add-to-cart-button {
+    margin-top: 16px;
+    font-size: 16px;
+    padding: 12px 20px;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-to-cart-button {
+    gap: 8px;
+}
+
+.plus-icon {
+    margin-right: 8px;
+    font-size: 26px;
+}
+.chat-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.plus-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
