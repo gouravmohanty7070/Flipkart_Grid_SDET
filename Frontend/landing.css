@@ -425,3 +425,163 @@ a {
     justify-content: center;
     flex-direction: column;
 }
+
+.features {
+    padding: 64px;
+  
+    display: flex;
+    flex-direction: column;
+  
+    background-color: var(--primary-color);
+    background-image: url("../../assets/popular_bg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  
+    overflow: hidden;
+  }
+  
+  .features__title {
+    font-size: 56px;
+    font-family: var(--playfair-display);
+    font-weight: 600;
+    line-height: 78px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .features__filters {
+    margin-top: 48px;
+    max-width: 100%;
+    overflow-x: auto;
+  
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+  }
+  
+  .features__filter-btn {
+    padding: 10px 28px;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 46px;
+  
+    font-size: 16px;
+    font-weight: 300px;
+    line-height: 25px;
+    font-family: var(--plus-jakarta-sans);
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  
+  .features__catalogue {
+    margin-top: 64px;
+  
+    display: flex;
+
+    flex-wrap: wrap;
+    justify-content: center; /* Adjust alignment to start */
+    align-items: flex-end;
+    gap: 20px;
+  }
+  
+  .features__button {
+    width: fit-content;
+  
+    padding: 20px 30px;
+    margin: 80px auto 0;
+  
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    font-family: var(--plus-jakarta-sans);
+    color: #fff;
+  
+    border: none;
+    outline: none;
+    background: var(--secondary-color);
+    border-radius: 64px;
+    cursor: pointer;
+  }
+  
+  .features__button span {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    font-family: "Material Symbols Sharp", sans-serif;
+    margin-left: 21px;
+  }
+  
+  .features__card {
+    padding: 38px;
+    width: 300px; 
+    height: fit-content;
+  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  
+    border-radius: 36px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-right: 20px;
+  }
+  
+  .features__card-image {
+    width: 210px;
+    height: 184px;
+    object-fit: contain;
+  }
+  
+  .features__card-title {
+    margin-top: 47px;
+  
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    font-family: var(--playfair-display);
+    color: #fff;
+    text-align: center;
+  }
+  
+  .features__card-price {
+    font-size: 20px; 
+    font-weight: 500;
+    font-family: var(--plus-jakarta-sans);
+    color: #fff;
+    text-align: center;
+    margin-top:4%;
+  }
+  
+  
+
+  
+  .features__card.active-card {
+    background: #fff;
+
+    width: 340px; 
+    margin-right: 0;
+  }
+  
+  .features__card.active-card .features__card-image {
+    width: 214px;
+    height: 160px;
+  }
+  
+  .features__card.active-card .features__card-title {
+    color: var(--black-500);
+    font-size: 32px;
+  }
+  
+
+  .features__card.active-card .features__card-price {
+    font-size: 24px;
+    color: var(--gray-100);
+  }
