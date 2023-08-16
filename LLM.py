@@ -96,6 +96,7 @@ I have my anniversary night with my wife, I want to wear something nice
 
 print(get_query_from_text(wish))
 
+# uncomment to test for memory
 # wish_2 = "slim fit clothes make me look fat, tell me something else"
 
 # print(get_query_from_text(wish_2))
