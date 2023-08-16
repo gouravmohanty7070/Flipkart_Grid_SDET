@@ -111,7 +111,7 @@ body {
 }
 
 .custom {
-    margin-top: 550px;
+    margin-top: 530px;
 }
 
 .top-container {
@@ -205,4 +205,52 @@ body {
 .plus-icon {
     margin-right: 8px;
     font-size: 18px;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 290px);
+    position: absolute;
+    bottom: 0;
+    left: 320px;
+    max-height: calc(3 * (100vh - 200px));
+    overflow-y: scroll;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    width: 95%;
+    margin: 20px 0;
+}
+.chat-input {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.message-input {
+    flex-grow: 1;
+    border: none;
+    padding: 8px;
+    font-size: 16px;
+    overflow-y: scroll;
+}
+
+.icon-container {
+    display: flex;
+    gap: 10px;
+}
+
+.icon {
+    font-size: 24px;
+    color: var(--color-primary);
+    cursor: pointer;
+    margin-right: 10px;
 }
