@@ -46,7 +46,7 @@ a {
     align-items: center;
 }
 
-.sushi__subtitle {
+.us__subtitle {
     font-size: 18px;
     font-weight: 400;
     font-family: var(--plus-jakarta-sans);
@@ -57,7 +57,7 @@ a {
     letter-spacing: -0.01em;
 }
 
-.sushi__title {
+.us__title {
     font-size: 64px;
     font-weight: 600;
     font-family: var(--playfair-display);
@@ -67,7 +67,7 @@ a {
     margin-top: 16px;
 }
 
-.sushi__description {
+.us__description {
     font-size: 18px;
     font-weight: 400;
     font-family: var(--plus-jakarta-sans);
@@ -82,12 +82,12 @@ a {
 }
 
 
-.sushi__hide-scrollbar::-webkit-scrollbar {
+.us__hide-scrollbar::-webkit-scrollbar {
     display: none;
 }
 
 
-.sushi__hide-scrollbar {
+.us__hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -487,7 +487,7 @@ a {
     display: flex;
 
     flex-wrap: wrap;
-    justify-content: center; /* Adjust alignment to start */
+    justify-content: space-between; /* Adjust alignment to start */
     align-items: flex-end;
     gap: 20px;
   }
@@ -584,4 +584,169 @@ a {
   .features__card.active-card .features__card-price {
     font-size: 24px;
     color: var(--gray-100);
+  }
+  .discover {
+    position: relative;
+  
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .discover__discover {
+    position: absolute;
+    top: 44%;
+    left: 44%;
+    z-index: 1;
+  
+    width: 160px;
+    height: 160px;
+  
+    border-radius: 100%;
+    background-color: var(--secondary-color);
+    cursor: pointer;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .discover__discover p {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: var(--plus-jakarta-sans);
+  
+    text-transform: uppercase;
+    color: #fff;
+  }
+  
+  .discover-us,
+  .discover-second {
+    width: 100%;
+    min-height: 640px;
+  
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .discover__content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+    padding: 32px 64px;
+  }
+  
+  .discover__list {
+    list-style: none;
+  
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .discover__list li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 12px;
+  
+    min-width: 210px;
+  }
+  
+  .discover__icon {
+    width: 24px;
+    height: 24px;
+  
+    border-radius: 100%;
+    background-color: var(--primary-color);
+  }
+  
+  .discover__icon img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+  }
+  
+  .discover__list p {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--plus-jakarta-sans);
+  
+    color: var(--secondary-color);
+  }
+  
+  .discover__image {
+    flex: 1;
+  
+    position: relative;
+    padding: 32px 64px;
+  
+    background-color: var(--color-white);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  
+  .discover-us .discover__image {
+    background-image: url("../../assets/japanese_us.png");
+  }
+  
+  .discover-drink .discover__image {
+    background-image: url("../../assets/japanese_second.png");
+  }
+  
+  .discover__image img {
+    width: 254px;
+    height: 260px;
+    object-fit: contain;
+  }
+  .discover__image .illus{
+    width: 454px;
+    height: 460px;
+    object-fit: contain;
+  }
+  
+  /* Arrows */
+  .discover__arrow {
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .discover__arrow img {
+    object-fit: contain;
+  }
+  
+  .discover__arrow-left {
+    left: -2.5px;
+    top: 12%;
+  }
+  
+  .discover__arrow-left img,
+  .discover__arrow-top img {
+    width: auto;
+    height: 100%;
+  }
+  
+  .discover__arrow-top {
+    top: -10.5px;
+    left: 12%;
+  }
+  
+  .discover__arrow-bottom {
+    bottom: -6.5px;
+    right: 12%;
+  }
+  
+  .discover__arrow-bottom img,
+  .discover__arrow-right img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .discover__arrow-right {
+    right: -2.5px;
+    bottom: 12%;
   }
