@@ -216,7 +216,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-  max-width: calc(100% - 290px);
+    max-width: calc(100% - 290px);
     position: absolute;
     bottom: 0;
     left: 320px;
@@ -265,7 +265,7 @@ body {
 
 .chat-ui {
     width: 100%;
-  max-width: calc(100% - 290px);
+    max-width: calc(100% - 290px);
     margin-left: 300px;
     margin-top: 100px;
     background-color: var(--color-background);
@@ -281,7 +281,7 @@ body {
     display: flex;
     align-items: flex-start;
     margin: 12px 0;
-    
+
 }
 
 .ai-bubble {
@@ -329,7 +329,7 @@ body {
 
 .product-card {
     width: 100%;
-  max-width: calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
     background-color: var(--color-white);
     border-radius: 8px;
     box-shadow: var(--box-shadow);
@@ -392,20 +392,22 @@ body {
     text-decoration: none;
 }
 
+
 .attachment-popup {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--color-background);
+    background-color: #ffffff;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     z-index: 999;
-    width: 80%; 
-    height: 80%;
+    width: 60%;
+    max-height: 80%;
 }
+
 .close-button {
     position: absolute;
     top: 10px;
@@ -413,7 +415,6 @@ body {
     background: none;
     border: none;
     font-size: 20px;
-    color: var(--color-primary);
     cursor: pointer;
 }
 
@@ -425,40 +426,110 @@ body {
     padding: 12px;
     font-size: 20px;
     font-weight: 600;
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    background-color: #b1454a;
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 60%;
+    width: 100%;
+}
+
+.popup-button.active {
+    background-color: black;
 }
 
 .popup-button:hover {
-    background-color: darken(var(--color-text), 10%);
-    border: 3px solid var(--color-primary);
-    color: var(--color-primary);
+    background-color: #8e3237;
+}
+
+.clothes-visualizer-content {
+    display: none;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drag-drop-card {
+    border: 2px dashed var(--color-primary);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-prompt-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.prompt-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid var(--color-primary);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.save-button {
+    padding: 8px 16px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.image-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.file-label {
+    margin-top: 2%;
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.file-input {
+    display: none;
 }
 
 
 @media (max-width: 768px) {
     .left-container {
-      max-width: 100%;
+        max-width: 100%;
     }
-  
+
     .top-container,
     .chat-container,
     .chat-ui {
-      max-width: 100%;
+        max-width: 100%;
     }
-  
+
     .product-card {
-      max-width: calc(50% - 20px);
+        max-width: calc(50% - 20px);
     }
-  }
-  
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
     .product-card {
-      max-width: calc(100% - 20px);
+        max-width: calc(100% - 20px);
     }
-  }
+}

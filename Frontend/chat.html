@@ -162,7 +162,38 @@
         <button class="close-button" id="closePopup"><i class="fas fa-times"></i></button>
         <button class="popup-button" id="clothesVisualizer">Clothes Visualizer</button>
         <button class="popup-button" id="searchFashion">Search Fashion</button>
+        <div class="clothes-visualizer-content" id="clothesVisualizerContent">
+            <div class="drag-drop-card" id="dragDropCard">
+                <p>Drag and drop your clothes here or</p>
+                <label for="fileInput" class="file-label">
+                    <span class="material-symbols-sharp">cloud_upload</span> Browse
+                </label>
+                <input type="file" id="fileInput" class="file-input">
+            </div>
+            <div class="input-prompt-container" id="inputContainer">
+                <input type="text" class="prompt-input" id="promptInput" placeholder="Enter a prompt...">
+                <button class="save-button" id="saveButton">Save</button>
+            </div>
+            <div class="image-container" id="imageContainer">
+
+            </div>
+        </div>
+        <div class="search-fashion-content" id="searchFashionContent">
+            <div class="drag-drop-card" id="dragDropCard">
+                <p>Drag and drop your clothes here or</p>
+                <label for="fileInput" class="file-label">
+                    <span class="material-symbols-sharp">cloud_upload</span> Browse
+                </label>
+                <input type="file" id="fileInput" class="file-input">
+            </div>
+            <div class="input-prompt-container" id="inputContainer">
+                <input type="text" class="prompt-input" id="promptInput" placeholder="Enter a prompt...">
+                <button class="save-button" id="saveButton">Submit</button>
+            </div>
+        </div>
     </div>
+
     <script src="chat.js"></script>
 </body>
+
 </html>
