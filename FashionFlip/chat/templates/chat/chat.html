@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat UI</title>
+
+    {% load static %}
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap">
     <link rel="stylesheet"
@@ -17,7 +20,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="shortcut icon" href="https://res.cloudinary.com/dhhax6yae/image/upload/v1692253215/Illustration_13_-modified_nstxo2.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="{% static 'chat/chat.css' %}">
 </head>
 
 <body>
@@ -194,7 +197,7 @@
         </div>
     </div>
 
-    <script src="chat.js"></script>
+    <script src="{% static 'chat/chat.js' %}"></script>
 </body>
 
 </html>
