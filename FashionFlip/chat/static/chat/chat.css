@@ -526,10 +526,18 @@ body {
     .product-card {
         max-width: calc(50% - 20px);
     }
+
+    .chat-container {
+        left: 0; 
+        bottom: 60px; 
+    }
 }
 
 @media (max-width: 480px) {
     .product-card {
         max-width: calc(100% - 20px);
+    }
+    .chat-container {
+        bottom: 100px;
     }
 }
