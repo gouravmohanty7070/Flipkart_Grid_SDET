@@ -1,34 +1,164 @@
 document.getElementById("chatForm").addEventListener("submit", function (e) {
-  // Prevent the form from submitting (page reload)
   e.preventDefault();
 
-  // Get the input field
-  const inputField = document.querySelector(".message-input");
+  let userInput = document.getElementById("userInput").value;
+  displayUserMessage(userInput);
+  document.getElementById("userInput").value = "";
+  const csrftoken = document.querySelector("[name=csrfmiddlewaretoken]").value;
 
-  // Get the message from the input field
-  const message = inputField.value;
+  fetch(window.chatUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrftoken,
+    },
+    body: JSON.stringify({
+      text: userInput,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Assuming data contains a 'text' field for the bot's reply and other fields contain image recommendations
+      displayBotReply(data.text);
 
-  // Check if the message is not empty
-  if (message.trim() !== "") {
-    // Create a new chat bubble
-    const chatBubble = document.createElement("div");
-    chatBubble.className = "chat-bubble user-bubble";
-    chatBubble.innerHTML = `
-            <div class="bubble-text">${message}</div>
-            <div class="profile-picture"><img src="https://res.cloudinary.com/dhhax6yae/image/upload/v1691769490/Paneer_qc1zhn.png" alt="User Profile"></div>
-        `;
-
-    // Add the chat bubble to the messages-container above the input field
-    const messagesContainer = document.querySelector(".messages-container");
-    messagesContainer.appendChild(chatBubble);
-
-    // Clear the input field for the next message
-    inputField.value = "";
-
-    // Scroll the messages container to show the new message
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  }
+      for (const category in data) {
+        if (category !== "text" && data[category]) {
+          // If category isn't 'text' and has data
+          displayBotReply(category, data[category]); // Display image for each category recommendation
+        }
+      }
+    })
+    .catch((error) => {
+      console.error("There was an error with the request:", error);
+    });
 });
+
+function displayUserMessage(message) {
+  const chatContainer = document.querySelector(".chat-ui");
+
+  const userBubble = document.createElement("div");
+  userBubble.classList.add("chat-bubble", "user-bubble");
+
+  const bubbleText = document.createElement("div");
+  bubbleText.classList.add("bubble-text");
+  bubbleText.textContent = message;
+
+  const profilePic = document.createElement("div");
+  profilePic.classList.add("profile-picture");
+  const img = document.createElement("img");
+  img.src =
+    "https://res.cloudinary.com/dhhax6yae/image/upload/v1691769490/Paneer_qc1zhn.png";
+  img.alt = "User Profile";
+  profilePic.appendChild(img);
+
+  userBubble.appendChild(bubbleText);
+  userBubble.appendChild(profilePic);
+
+  chatContainer.appendChild(userBubble);
+}
+
+function displayBotReply(text, base64Image = null) {
+  const chatContainer = document.querySelector(".chat-ui");
+
+  const botBubble = document.createElement("div");
+  botBubble.classList.add("chat-bubble", "ai-bubble");
+
+  const profilePic = document.createElement("div");
+  profilePic.classList.add("profile-picture");
+  const img = document.createElement("img");
+  img.src =
+    "https://res.cloudinary.com/dhhax6yae/image/upload/v1692184252/Illustration_8_-modified_ohqeeu.png";
+  img.alt = "AI Profile";
+  profilePic.appendChild(img);
+
+  const bubbleText = document.createElement("div");
+  bubbleText.classList.add("bubble-text");
+  bubbleText.textContent = text;
+
+  botBubble.appendChild(profilePic);
+  botBubble.appendChild(bubbleText);
+
+  if (base64Image) {
+    const imageElement = document.createElement("img");
+    imageElement.src = `data:image/jpeg;base64,${base64Image}`;
+    imageElement.classList.add("chat-image"); // You can style this class for better visuals
+    botBubble.appendChild(imageElement);
+  }
+
+  chatContainer.appendChild(botBubble);
+}
+
+document
+  .getElementById("chatForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const userMessage = document.getElementById("userInput").value;
+
+    // Display user's message
+    const userBubble = `
+      <div class="chat-bubble user-bubble">
+          <div class="bubble-text">${userMessage}</div>
+          <div class="profile-picture">
+              <img src="https://res.cloudinary.com/dhhax6yae/image/upload/v1691769490/Paneer_qc1zhn.png" alt="User Profile">
+          </div>
+      </div>`;
+    document.querySelector(".chat-ui").innerHTML += userBubble;
+
+    // Fetch recommendations from backend
+    fetch(window.chatUrl, {
+      method: "POST",
+      body: JSON.stringify({ message: userMessage }),
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]")
+          .value,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Display bot's reply
+        displayBotReply(data.text, data.base64Image);
+
+        let dataArray = [];
+
+        for (const category in data) {
+          dataArray.push({
+            category: category,
+            images: data[category],
+          });
+        }
+
+        // console.log(dataArray);
+        console.log(typeof dataArray);
+        // Display recommended products
+        let productHtml = "";
+        dataArray.forEach((item) => {
+          if (Array.isArray(item.images)) {
+            item.images.forEach((imgUrl) => {
+              productHtml += `
+            <div class="product-card">
+                <img src="${imgUrl}" alt="Product Image">
+                <div class="product-details">
+                    <div class="product-name">${item.category}</div>
+                    <div class="product-price">$100</div> 
+                </div>
+                <div class="product-actions">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="favorite">Favorite</button>
+                </div>
+            </div>`;
+            });
+          }
+        });
+
+        document.getElementById("recommendedProducts").innerHTML = productHtml;
+      })
+      .catch((error) => console.error("Error:", error));
+
+    // Clear the user input
+    document.getElementById("userInput").value = "";
+  });
 
 document.addEventListener("DOMContentLoaded", function () {
   const attachmentIcon = document.querySelector(".fa-paperclip");
