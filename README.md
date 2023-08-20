@@ -1,4 +1,12 @@
-# Flipkart_Grid_SDET
+![Capture](https://res.cloudinary.com/dhhax6yae/image/upload/v1692450139/Screenshot_2023-08-19_at_6.27.34_PM_miqrv9.png)
+
+# FashionFlip
+---
+
+`FashionFlip` is the breakthrough you've been waiting for to transform your fashion experience. In a world where style matters, we're introducing a fresh approach that blends technology with individuality.
+
+Say hello to AI-powered visual searches, lifelike outfit previews, and a personalized stylist, Mona. Step into a new realm of fashion discovery with FashionFlip. Your style, your way.
+
 
 
 Contents
@@ -7,9 +15,7 @@ Contents
 * [Installation](#installation)
 * [Tech-Stacks Used](#tech-stacks-used)
 * [Features Added](#use-cases)
-* [Future Scope](#future-scope)
-* [Snapshots](#snapshots)
-* [Deployed Link](#deployed-link)
+* [Demo](#demo)
 
 ### Installation:
 ---
@@ -67,4 +73,27 @@ Open your web browser and go to http://127.0.0.1:8000/
 - OpenAI
 - Django
 - Javascript
-- Azure
+- Pinecone
+
+### Use Cases
+---
+<ol>
+<li>Explore New Styles, Your Way:
+Embrace style evolution effortlessly. Personalized outfit ideas blend trends and your unique taste, inspiring fashion exploration.</li></br>
+<li>Instant Party-Ready Confidence:
+Arrive prepared at last-minute events. FashionFlip's visual search matches themes, ensuring your confidence shines through in style.
+</li></br>
+<li>Stay Stylish in Any Weather:
+Effortlessly navigate seasons. Specify preferences and colors, allowing FashionFlip to curate chic outfits tailored to weather conditions.
+</li></br>
+<li>Effortless Packing for Adventures:
+Simplify travel preparation. Share trip details for curated, versatile outfits. Travel light while staying fashion-forward with FashionFlip.
+</li></br>
+</ol>
+
+--------
+### Demo
+---
+
+[Demo Video](https://drive.google.com/file/d/10bg293V7i0WMPWPftFM3b8gGsHPIXGL1/view?usp=drive_link)
+
