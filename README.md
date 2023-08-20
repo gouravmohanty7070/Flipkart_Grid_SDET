@@ -95,5 +95,5 @@ Simplify travel preparation. Share trip details for curated, versatile outfits. 
 ### Demo
 ---
 
-[Demo Video](https://drive.google.com/file/d/10bg293V7i0WMPWPftFM3b8gGsHPIXGL1/view?usp=drive_link)
+[Demo Video](https://drive.google.com/file/d/1q9u5K001zdps-9WpUBGXJZHVkTzW2s9u/view?usp=sharing)
 
