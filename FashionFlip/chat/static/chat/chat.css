@@ -218,6 +218,7 @@ body {
   left: 320px;
   max-height: calc(3 * (100vh - 200px));
   overflow-y: scroll;
+  height: 100vh;
 }
 
 .input-container {
@@ -229,6 +230,10 @@ body {
   padding: 8px;
   width: 95%;
   margin: 20px 0;
+  position: fixed;
+  bottom: 0;
+  width: 70%;
+  background-color: #fff;
 }
 
 .chat-input {
@@ -268,6 +273,11 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.messages-container {
+  flex-grow: 1;
+  overflow-y: auto; /* allow scrolling if messages overflow */
 }
 
 .chat-bubble {
